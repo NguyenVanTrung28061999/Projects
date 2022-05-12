@@ -10,6 +10,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const MaterialApp(
+      debugShowCheckedModeBanner: false,
       home: InformationScreen(),
     );
   }
@@ -144,20 +145,32 @@ class _InformationScreenState extends State<InformationScreen> {
       ),
     );
   }
+  Widget inputInformation(
+      {required String labelText,
+        required String hintText,
+        required controller}) {
+    return Container(
+      padding: const EdgeInsets.only(top: 5, bottom: 15),
+      child: TextField(
+        decoration: InputDecoration(
+            border: const OutlineInputBorder(),
+            labelText: labelText,
+            hintText: hintText),
+        controller: controller,
+      ),
+    );
+  }
+  @override
+  void dispose() {
+    // TODO: implement dispose
+    super.dispose();
+    userName.dispose();
+    diemToan.dispose();
+    diemAnh.dispose();
+    diemVan.dispose();
+  }
 }
 
-Widget inputInformation(
-    {required String labelText,
-    required String hintText,
-    required controller}) {
-  return Container(
-    padding: const EdgeInsets.only(top: 5, bottom: 15),
-    child: TextField(
-      decoration: InputDecoration(
-          border: const OutlineInputBorder(),
-          labelText: labelText,
-          hintText: hintText),
-      controller: controller,
-    ),
-  );
-}
+
+
+
